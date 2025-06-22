@@ -1,0 +1,40 @@
+﻿@model DataTable
+@using System.Data
+
+<a class="btn btn-info" asp-controller="Home" asp-action="ProductAddEdit">Add</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>delete</th>
+            <th>edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                @* Customer_id,Customer_Name, Email *@
+                <td>@row["Customer_Name"]</td>
+                <td>@row["Email"]</td>
+                <td><form method="post" asp-controller="Home" asp-action="CustomerDelete" asp-route-Customer_id="@row["Customer_id"]">
+                    <input type="hidden" asp-for="@row["Customer_id"]" />
+                    <button type="submit" class="btn btn-outline-danger btn-xs">
+                        <i class=" bi bi-trash3">delete</i>
+                    </button>
+                </form>
+                </td>
+                <td>
+                    <a class="btn btn-outline-success btn-xs" asp-controller="Home" asp-action="ProductAddEdit" asp-route-Customer_id="@row["Customer_id"]">
+                        <i class="bi bi-pencil-fill">edit</i>
+                    </a>
+                    </td>
+                    @* <button type="submit" class="btn btn-outline-danger btn-xs">
+                        <i class="bi bi-x"></i>
+                    </button> *@
+                
+            </tr>
+        }
+    </tbody>
+</table>

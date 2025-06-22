@@ -1,0 +1,12 @@
+﻿@model CustomerModel
+
+<form method="post" asp-action="ProductAddEdit" asp-controller="Home">
+    <input type="hidden" asp-for="Customer_id"/>
+    <label asp-for="Customer_Name"></label>
+    <input asp-for="Customer_Name" />
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <button type="submit">
+        Submit
+    </button>
+</form>
